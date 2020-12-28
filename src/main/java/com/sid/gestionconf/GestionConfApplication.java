@@ -22,7 +22,7 @@ public class GestionConfApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Utilisateur u= new Utilisateur(null,"n","p","","","","");
+        Utilisateur u= new Utilisateur(null,"n","p","","","","maroc");
         utilisateurRepo.save(u);
         conferenceRepo.save(new Conference(null,u,"",null,"","","","",5,null,5,0,false));
     }
