@@ -20,7 +20,9 @@ public class Conference {
 	private Utilisateur organisateur;
 	private String nom;
 	private Date date;
-	private String hotel;
+	@OneToOne()
+	@JoinColumn(name = "idh", referencedColumnName = "id")
+	private Hotel hotel;
 	private String categorie;
 	private String sponsor;
 	private String pageweb;
