@@ -20,6 +20,7 @@ public class Chambre {
 	private String type;
 	private Boolean disponible;
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idhotel")
 	private Hotel hotel;
 
 }

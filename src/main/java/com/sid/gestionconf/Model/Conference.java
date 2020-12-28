@@ -16,12 +16,12 @@ public class Conference {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@OneToOne()
-	@JoinColumn(name = "ido", referencedColumnName = "id")
+	@JoinColumn(name = "idorganisateur", referencedColumnName = "id")
 	private Utilisateur organisateur;
 	private String nom;
 	private Date date;
 	@OneToOne()
-	@JoinColumn(name = "idh", referencedColumnName = "id")
+	@JoinColumn(name = "idhotel", referencedColumnName = "id")
 	private Hotel hotel;
 	private String categorie;
 	private String sponsor;
