@@ -23,6 +23,8 @@ public class Session {
 	@ManyToOne()
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
 	private Conference conference;
+	@OneToMany (mappedBy = "session")
+	private Set<Track> tracks;
 	private Date datedeb;
 	private Date datefin;
 	private Long salle;

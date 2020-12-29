@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,6 +24,8 @@ public class Conference {
 	@OneToOne()
 	@JoinColumn(name = "idhotel", referencedColumnName = "id")
 	private Hotel hotel;
+	@OneToMany (mappedBy = "conference")
+	private Set<Session> sessions;
 	private String categorie;
 	private String sponsor;
 	private String pageweb;

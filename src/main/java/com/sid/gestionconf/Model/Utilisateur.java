@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
@@ -15,5 +13,10 @@ public class Utilisateur {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom, prenom, email, affiliaton, fonction, pays;
-
+    @OneToMany(mappedBy = "client")
+    private Set<Reservation> reservations;
+    @OneToMany(mappedBy = "inviteur")
+    private Set<Invitation> invitationsenv;
+    @OneToMany(mappedBy = "inviter")
+    private Set<Invitation> invitationsrecu;
 }
