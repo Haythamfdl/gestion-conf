@@ -18,7 +18,7 @@ public class Reservation {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idhotel")
 	private Hotel hotel;
-	private Long chambre;
+	private Long idchambre;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idclient")
 	private Utilisateur client;

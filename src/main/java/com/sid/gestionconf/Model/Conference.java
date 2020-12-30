@@ -24,6 +24,7 @@ public class Conference {
 	@OneToOne()
 	@JoinColumn(name = "idhotel", referencedColumnName = "id")
 	private Hotel hotel;
+	private Long idsalle;
 	@OneToMany (mappedBy = "conference")
 	private Set<Session> sessions;
 	private String categorie;

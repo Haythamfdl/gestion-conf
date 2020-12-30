@@ -16,6 +16,4 @@ public class Topic {
 	private Long id;
 	private String nom;
 	private String description;
-	@Column(columnDefinition = "boolean default false")
-	private Boolean deleted;
 }
