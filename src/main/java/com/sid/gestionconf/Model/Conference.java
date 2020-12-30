@@ -1,5 +1,7 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,7 @@ public class Conference {
 	private Hotel hotel;
 	private Long idsalle;
 	@OneToMany (mappedBy = "conference")
+	@JsonBackReference
 	private Set<Session> sessions;
 	private String categorie;
 	private String sponsor;

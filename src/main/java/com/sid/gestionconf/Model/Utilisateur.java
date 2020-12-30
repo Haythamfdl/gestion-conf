@@ -1,5 +1,7 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,10 +23,13 @@ public class Utilisateur {
     private String fonction;
     private String pays;
     @OneToMany(mappedBy = "client")
+    @JsonBackReference
     private Set<Reservation> reservations;
     @OneToMany(mappedBy = "inviteur")
+    @JsonBackReference
     private Set<Invitation> invitationsenv;
     @OneToMany(mappedBy = "inviter")
+    @JsonBackReference
     private Set<Invitation> invitationsrecu;
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;

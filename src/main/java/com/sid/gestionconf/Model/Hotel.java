@@ -1,5 +1,8 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +22,10 @@ public class Hotel {
 	private String adress;
 	private String ville;
 	@OneToMany(mappedBy = "hotel")
+	@JsonBackReference
 	private Set<Chambre> chambres;
 	@OneToMany(mappedBy = "hotel")
+	@JsonBackReference
 	private Set<SalleConference> saleconf;
 
 }

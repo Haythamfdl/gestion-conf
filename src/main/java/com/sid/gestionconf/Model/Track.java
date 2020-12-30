@@ -1,5 +1,6 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Track {
 	private Boolean terminer;
 	@ManyToOne()
 	@JoinColumn(name = "idsession", referencedColumnName = "id")
+	@JsonManagedReference
 	private Session session;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;

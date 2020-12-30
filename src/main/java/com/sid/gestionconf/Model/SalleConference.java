@@ -1,5 +1,8 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +21,9 @@ public class SalleConference {
 	private int nbpersonne;
 	private double prix;
 	private Boolean disponible;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idhotel")
+	@JsonManagedReference
 	private Hotel hotel;
 
 }

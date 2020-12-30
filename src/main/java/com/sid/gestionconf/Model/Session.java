@@ -1,5 +1,7 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,10 @@ public class Session {
 	private Utilisateur chair;
 	@ManyToOne()
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
+	@JsonManagedReference
 	private Conference conference;
 	@OneToMany (mappedBy = "session")
+	@JsonBackReference
 	private Set<Track> tracks;
 	private Date datedeb;
 	private Date datefin;

@@ -3,10 +3,7 @@ package com.sid.gestionconf.Controller;
 import com.sid.gestionconf.Model.Conference;
 import com.sid.gestionconf.Repos.ConferenceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,13 @@ public class CoferenceController {
     private ConferenceRepo conferenceRepo;
     @GetMapping("/conferences")
     public List<Conference> getConferences(){
-        return conferenceRepo.findAllByTerminer(false);
+        return conferenceRepo.findAllByTerminerAndDeleted(false,false);
     }
+
+    @PostMapping("/conferences")
+    public void addConference(Conference conference){
+        conferenceRepo.save(conference);
+    }
+
+
 }

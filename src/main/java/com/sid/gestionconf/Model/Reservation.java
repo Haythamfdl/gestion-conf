@@ -1,5 +1,7 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,12 +17,13 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne()
 	@JoinColumn(name = "idhotel")
 	private Hotel hotel;
 	private Long idchambre;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idclient")
+	@JsonManagedReference
 	private Utilisateur client;
 	private Date datedeb;
 	private Date datefin;

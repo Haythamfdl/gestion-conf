@@ -9,4 +9,5 @@ import java.util.List;
 @RepositoryRestResource
 public interface ConferenceRepo extends JpaRepository<Conference, Long> {
     public List<Conference> findAllByTerminer(boolean t);
+    public List<Conference> findAllByTerminerAndDeleted(boolean t,boolean d);
 }
