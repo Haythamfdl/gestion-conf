@@ -26,5 +26,6 @@ public class Reservation {
 	private Date datefin;
 	private Boolean repas;
 	private double prix;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

@@ -28,5 +28,8 @@ public class Session {
 	private Date datedeb;
 	private Date datefin;
 	private Long salle;
+	@Column(columnDefinition = "boolean default false")
 	private Boolean termine;
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

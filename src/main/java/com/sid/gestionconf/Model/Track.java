@@ -24,5 +24,6 @@ public class Track {
 	@ManyToOne()
 	@JoinColumn(name = "idsession", referencedColumnName = "id")
 	private Session session;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

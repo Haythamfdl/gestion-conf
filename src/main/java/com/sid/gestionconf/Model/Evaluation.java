@@ -25,5 +25,6 @@ public class Evaluation {
 	private String commentaire;
 	private String note;
 	private Date date;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

@@ -33,6 +33,8 @@ public class Conference {
 	private Date delaisoumission;
 	private double prixticket;
 	private int nticket;
+	@Column(columnDefinition = "boolean default false")
 	private Boolean terminer;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

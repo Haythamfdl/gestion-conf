@@ -22,5 +22,6 @@ public class Hotel {
 	private Set<Chambre> chambres;
 	@OneToMany(mappedBy = "hotel")
 	private Set<SalleConference> saleconf;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

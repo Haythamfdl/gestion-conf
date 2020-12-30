@@ -25,10 +25,12 @@ public class Invitation {
 	@ManyToOne
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
 	private Conference conference;
+	@Column(columnDefinition = "boolean default false")
 	private Boolean accepter;
 	private String Message;
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

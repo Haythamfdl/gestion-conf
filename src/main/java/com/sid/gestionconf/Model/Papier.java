@@ -35,5 +35,6 @@ public class Papier {
 	@Lob
 	@Column(columnDefinition = "BLOB")
 	private byte[] data;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

@@ -21,4 +21,6 @@ public class SalleConference {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idhotel")
 	private Hotel hotel;
+	@Column(columnDefinition = "bit(1) default 0")
+	private Boolean deleted;
 }
