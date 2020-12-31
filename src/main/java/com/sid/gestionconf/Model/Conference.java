@@ -28,7 +28,6 @@ public class Conference {
 	private Date date;
 	@OneToOne()
 	@JoinColumn(name = "idhotel", referencedColumnName = "id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Hotel hotel;
 	@OneToMany (mappedBy = "conference")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
