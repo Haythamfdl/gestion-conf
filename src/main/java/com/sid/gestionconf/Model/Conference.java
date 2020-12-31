@@ -22,7 +22,6 @@ public class Conference {
 	private Long id;
 	@OneToOne()
 	@JoinColumn(name = "idorganisateur", referencedColumnName = "id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur organisateur;
 	private String nom;
 	private Date date;
