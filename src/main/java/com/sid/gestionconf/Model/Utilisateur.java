@@ -23,13 +23,13 @@ public class Utilisateur {
     private String fonction;
     private String pays;
     @OneToMany(mappedBy = "client")
-    @JsonBackReference
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Reservation> reservations;
     @OneToMany(mappedBy = "inviteur")
-    @JsonBackReference
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Invitation> invitationsenv;
     @OneToMany(mappedBy = "inviter")
-    @JsonBackReference
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Invitation> invitationsrecu;
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;

@@ -19,11 +19,12 @@ public class Reservation {
 	private Long id;
 	@OneToOne()
 	@JoinColumn(name = "idhotel")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Hotel hotel;
 	private Long idchambre;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idclient")
-	@JsonManagedReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur client;
 	private Date datedeb;
 	private Date datefin;

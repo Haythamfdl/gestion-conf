@@ -1,6 +1,7 @@
 package com.sid.gestionconf.Model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +21,12 @@ public class Track {
 	private Date datefin;
 	@OneToOne()
 	@JoinColumn(name = "idpapier", referencedColumnName = "id")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Papier papier;
 	private Boolean terminer;
 	@ManyToOne()
 	@JoinColumn(name = "idsession", referencedColumnName = "id")
-	@JsonManagedReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Session session;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;

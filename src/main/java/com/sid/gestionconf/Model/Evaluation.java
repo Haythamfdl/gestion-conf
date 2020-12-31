@@ -1,5 +1,6 @@
 package com.sid.gestionconf.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,11 @@ public class Evaluation {
 	private Long id;
 	@OneToOne()
 	@JoinColumn(name = "idpauteur", referencedColumnName = "id")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur evaluateur;
 	@ManyToOne()
 	@JoinColumn(name = "idpapier", referencedColumnName = "id")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Papier papier;
 	private String revue;
 	private String commentaire;

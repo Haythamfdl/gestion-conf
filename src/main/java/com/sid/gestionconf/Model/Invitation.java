@@ -1,6 +1,7 @@
 package com.sid.gestionconf.Model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,14 +20,15 @@ public class Invitation {
 	private Long id;
 	@ManyToOne()
 	@JoinColumn(name = "idinviteur", referencedColumnName = "id")
-	@JsonManagedReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur inviteur;
 	@ManyToOne()
 	@JoinColumn(name = "idinviter", referencedColumnName = "id")
-	@JsonManagedReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur inviter;
 	@ManyToOne
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Conference conference;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean accepter;

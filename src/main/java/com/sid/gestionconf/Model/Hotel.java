@@ -8,13 +8,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Hotel {
+public class Hotel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,10 +23,10 @@ public class Hotel {
 	private String adress;
 	private String ville;
 	@OneToMany(mappedBy = "hotel")
-	@JsonBackReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Chambre> chambres;
 	@OneToMany(mappedBy = "hotel")
-	@JsonBackReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<SalleConference> saleconf;
 
 }

@@ -2,11 +2,13 @@ package com.sid.gestionconf.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,19 +17,20 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Session {
+public class Session implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne()
 	@JoinColumn(name = "idchair", referencedColumnName = "id")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur chair;
 	@ManyToOne()
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
-	@JsonManagedReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Conference conference;
 	@OneToMany (mappedBy = "session")
-	@JsonBackReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Track> tracks;
 	private Date datedeb;
 	private Date datefin;

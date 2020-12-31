@@ -24,6 +24,6 @@ public class Chambre {
 	private Boolean disponible;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idhotel")
-	@JsonManagedReference
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Hotel hotel;
 }
