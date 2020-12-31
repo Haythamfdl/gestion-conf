@@ -30,7 +30,6 @@ public class Conference {
 	@JoinColumn(name = "idhotel", referencedColumnName = "id")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Hotel hotel;
-	private Long idsalle;
 	@OneToMany (mappedBy = "conference")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Session> sessions;

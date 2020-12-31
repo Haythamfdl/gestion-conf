@@ -22,10 +22,6 @@ public class Session implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne()
-	@JoinColumn(name = "idchair", referencedColumnName = "id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	private Utilisateur chair;
-	@ManyToOne()
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Conference conference;
