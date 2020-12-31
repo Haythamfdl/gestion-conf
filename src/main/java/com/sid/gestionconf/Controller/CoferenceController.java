@@ -2,6 +2,7 @@ package com.sid.gestionconf.Controller;
 
 import com.sid.gestionconf.Model.Conference;
 import com.sid.gestionconf.Model.Hotel;
+import com.sid.gestionconf.Model.Utilisateur;
 import com.sid.gestionconf.Repos.ConferenceRepo;
 import com.sid.gestionconf.Repos.HotelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,15 @@ import java.util.List;
 public class CoferenceController {
     @Autowired
     private ConferenceRepo conferenceRepo;
-    @Autowired
-    private HotelRepo hotelRepo;
+
     @GetMapping("/conferences")
     public List<Conference> getConferences(){
         return conferenceRepo.findAllByTerminerAndDeleted(false,false);
+    }
+
+    @RequestMapping(value = "/conferences/myconf",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<Conference> getMyConferences(@RequestBody Utilisateur utilisateur){
+        return conferenceRepo.findAllByTerminerAndDeletedAndOrganisateur(false,false,utilisateur);
     }
 
     @RequestMapping(value = "/conferences",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

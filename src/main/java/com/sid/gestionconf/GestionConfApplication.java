@@ -14,10 +14,6 @@ import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
 public class GestionConfApplication implements CommandLineRunner {
-    @Autowired
-    private UtilisateurRepo utilisateurRepo;
-    @Autowired
-    private ConferenceRepo conferenceRepo;
 
     public static void main(String[] args) {
         SpringApplication.run(GestionConfApplication.class, args);
