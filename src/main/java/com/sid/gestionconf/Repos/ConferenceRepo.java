@@ -11,5 +11,5 @@ import java.util.List;
 public interface ConferenceRepo extends JpaRepository<Conference, Long> {
     public List<Conference> findAllByTerminer(boolean t);
     public List<Conference> findAllByTerminerAndDeleted(boolean t,boolean d);
-    public List<Conference> findAllByTerminerAndDeletedAndOrganisateur(boolean t, boolean d, Utilisateur u);
+    public List<Conference> findAllByOrganisateurAndDeleted(Utilisateur u,boolean d);
 }

@@ -25,18 +25,27 @@ public class CoferenceController {
         return conferenceRepo.findAllByTerminerAndDeleted(false,false);
     }
 
-    @RequestMapping(value = "/conferences/myconf",method = RequestMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public List<Conference> getMyConferences(@RequestBody Utilisateur utilisateur){
-        return conferenceRepo.findAllByTerminerAndDeletedAndOrganisateur(false,false,utilisateur);
+    @GetMapping ( "/conferences/myconf/{u}")
+    public List<Conference> getMyConferences(@PathVariable(name = "u") Long id){
+        Utilisateur utilisateur= new Utilisateur();
+        utilisateur.setId(id);
+        return conferenceRepo.findAllByOrganisateurAndDeleted(utilisateur,false);
     }
 
     @RequestMapping(value = "/conferences",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Conference> addConference(@RequestBody Conference conference)
     {
-        conferenceRepo.save(conference);
-        ResponseEntity<Conference> res=new ResponseEntity<>(conference, HttpStatus.ACCEPTED);
+        Conference conf = conferenceRepo.save(conference);
+        ResponseEntity<Conference> res=new ResponseEntity<>(conf, HttpStatus.ACCEPTED);
         return res;
     }
 
+    @RequestMapping(value = "/conferences",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Conference> modifyConference(@RequestBody Conference conference)
+    {
+        Conference conf = conferenceRepo.save(conference);
+        ResponseEntity<Conference> res=new ResponseEntity<>(conf, HttpStatus.ACCEPTED);
+        return res;
+    }
 
 }
