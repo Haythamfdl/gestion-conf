@@ -30,11 +30,18 @@ public class UtilisateurController {
     }
 
     @RequestMapping(value = "/utilisateurs",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Utilisateur> addutilisateur(@RequestBody Utilisateur utilisateur)
+    public ResponseEntity<Utilisateur> addUtilisateur(@RequestBody Utilisateur utilisateur)
     {
         Utilisateur user = utilisateurRepo.save(utilisateur);
         ResponseEntity<Utilisateur> res=new ResponseEntity<>(user, HttpStatus.ACCEPTED);
         return res;
     }
 
+    @RequestMapping(value = "/utilisateurs",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Utilisateur> updateUtilisateur(@RequestBody Utilisateur utilisateur)
+    {
+        Utilisateur user = utilisateurRepo.save(utilisateur);
+        ResponseEntity<Utilisateur> res=new ResponseEntity<>(user, HttpStatus.ACCEPTED);
+        return res;
+    }
 }
