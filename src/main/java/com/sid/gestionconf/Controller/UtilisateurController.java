@@ -6,10 +6,10 @@ import com.sid.gestionconf.Model.Utilisateur;
 import com.sid.gestionconf.Repos.ConferenceRepo;
 import com.sid.gestionconf.Repos.UtilisateurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +29,12 @@ public class UtilisateurController {
         return utilisateurRepo.findByEmailAndPassAndDeleted(email, pass, false);
     }
 
+    @RequestMapping(value = "/utilisateurs",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Utilisateur> addutilisateur(@RequestBody Utilisateur utilisateur)
+    {
+        Utilisateur user = utilisateurRepo.save(utilisateur);
+        ResponseEntity<Utilisateur> res=new ResponseEntity<>(user, HttpStatus.ACCEPTED);
+        return res;
+    }
 
 }
