@@ -9,6 +9,6 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface InvitationRepo extends JpaRepository<com.sid.gestionconf.Model.Invitation, Long> {
-    public List<Invitation> findAllByInviter(Utilisateur utilisateur);
+    public List<Invitation> findAllByInvitee(Utilisateur utilisateur);
     public List<Invitation> findAllByInviteur(Utilisateur utilisateur);
 }

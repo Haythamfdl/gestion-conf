@@ -20,15 +20,12 @@ public class Invitation {
 	private Long id;
 	@ManyToOne()
 	@JoinColumn(name = "idinviteur", referencedColumnName = "id")
-
 	private Utilisateur inviteur;
 	@ManyToOne()
 	@JoinColumn(name = "idinviter", referencedColumnName = "id")
-
-	private Utilisateur inviter;
+	private Utilisateur invitee;
 	@ManyToOne
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
-
 	private Conference conference;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean accepter;

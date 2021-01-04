@@ -39,7 +39,7 @@ public class InvitationController {
     public List<Invitation> getInvitationrec(@PathVariable(name = "id") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
-        return invitationRepo.findAllByInviter(utilisateur);
+        return invitationRepo.findAllByInvitee(utilisateur);
     }
 
     @RequestMapping(value = "/invitations",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

@@ -8,4 +8,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource
 public interface UtilisateurRepo extends JpaRepository<Utilisateur, Long> {
     public Utilisateur findByEmailAndPassAndDeleted(String e, String p,Boolean d);
+    public Utilisateur findByEmailAndDeleted(String e,Boolean d);
 }

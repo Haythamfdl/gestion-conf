@@ -29,6 +29,11 @@ public class UtilisateurController {
         return utilisateurRepo.findByEmailAndPassAndDeleted(email, pass, false);
     }
 
+    @GetMapping("/utilisateurs/{email}")
+    public Utilisateur getbyEmail(@PathVariable String email){
+        return utilisateurRepo.findByEmailAndDeleted(email, false);
+    }
+
     @RequestMapping(value = "/utilisateurs",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Utilisateur> addUtilisateur(@RequestBody Utilisateur utilisateur)
     {
