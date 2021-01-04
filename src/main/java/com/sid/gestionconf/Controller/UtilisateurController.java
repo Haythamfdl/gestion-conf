@@ -1,11 +1,8 @@
 package com.sid.gestionconf.Controller;
 
 
-import com.sid.gestionconf.Model.Conference;
 import com.sid.gestionconf.Model.Utilisateur;
-import com.sid.gestionconf.Repos.ConferenceRepo;
 import com.sid.gestionconf.Repos.UtilisateurRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +13,11 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "*")
 public class UtilisateurController {
-    @Autowired
     private UtilisateurRepo utilisateurRepo;
+
+    public UtilisateurController(UtilisateurRepo utilisateurRepo) {
+        this.utilisateurRepo = utilisateurRepo;
+    }
 
     @GetMapping("/utilisateurs")
     public List<Utilisateur> getUtilisateurs(){

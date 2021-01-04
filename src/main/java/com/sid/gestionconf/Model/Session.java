@@ -23,7 +23,6 @@ public class Session implements Serializable {
 	private Long id;
 	@ManyToOne()
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Conference conference;
 	@OneToMany (mappedBy = "session")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
