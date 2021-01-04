@@ -24,8 +24,10 @@ public class SalleConferenceController {
         return salleCRepo.findAll();
     }
 
-    @GetMapping("/sallesconferences/disponible/{hotel}")
-    public List<SalleConference> getSConferencesdis(@PathVariable(name = "hotel") Hotel hotel){
+    @GetMapping("/sallesconferences/disponible/{id}")
+    public List<SalleConference> getSConferencesdis(@PathVariable(name = "id") Long id){
+        Hotel hotel = new Hotel();
+        hotel.setId(id);
         return salleCRepo.findAllByDisponibleAndHotel(true, hotel);
     }
 }

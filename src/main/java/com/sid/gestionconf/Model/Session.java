@@ -29,7 +29,7 @@ public class Session implements Serializable {
 	private Set<Track> tracks;
 	private Date datedeb;
 	private Date datefin;
-	private Long salle;
+	private String salle;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean termine;
 	@Column(columnDefinition = "boolean default false")

@@ -25,8 +25,8 @@ public class CoferenceController {
         return conferenceRepo.findAllByTerminerAndDeletedOrderByIdDesc(false,false);
     }
 
-    @GetMapping ( "/conferences/myconf/{u}")
-    public List<Conference> getMyConferences(@PathVariable(name = "u") Long id){
+    @GetMapping ( "/conferences/myconf/{id}")
+    public List<Conference> getMyConferences(@PathVariable(name = "id") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
         return conferenceRepo.findAllByOrganisateurAndDeletedOrderByIdDesc(utilisateur,false);

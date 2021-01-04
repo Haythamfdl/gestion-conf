@@ -17,13 +17,12 @@ public class Chambre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private String etage;
+	private String numero;
 	private int nbpersonne;
 	private double prix;
 	private String type;
 	private Boolean disponible;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idhotel")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Hotel hotel;
 }
