@@ -22,14 +22,14 @@ public class CoferenceController {
 
     @GetMapping("/conferences")
     public List<Conference> getConferences(){
-        return conferenceRepo.findAllByTerminerAndDeleted(false,false);
+        return conferenceRepo.findAllByTerminerAndDeletedOrderByIdDesc(false,false);
     }
 
     @GetMapping ( "/conferences/myconf/{u}")
     public List<Conference> getMyConferences(@PathVariable(name = "u") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
-        return conferenceRepo.findAllByOrganisateurAndDeleted(utilisateur,false);
+        return conferenceRepo.findAllByOrganisateurAndDeletedOrderByIdDesc(utilisateur,false);
     }
 
     @RequestMapping(value = "/conferences",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

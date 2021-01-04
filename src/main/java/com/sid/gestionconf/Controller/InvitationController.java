@@ -23,7 +23,7 @@ public class InvitationController {
         this.utilisateurRepo = utilisateurRepo;
     }
 
-    @GetMapping("/invitations/")
+    @GetMapping("/invitations")
     public List<Invitation> getAll(){
         return invitationRepo.findAll();
     }
@@ -32,14 +32,14 @@ public class InvitationController {
     public List<Invitation> getInvitationenv(@PathVariable(name = "id") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
-        return invitationRepo.findAllByInviteur(utilisateur);
+        return invitationRepo.findAllByInviteurOrderByDateDesc(utilisateur);
     }
 
     @GetMapping("/invitations/recu/{id}")
     public List<Invitation> getInvitationrec(@PathVariable(name = "id") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
-        return invitationRepo.findAllByInvitee(utilisateur);
+        return invitationRepo.findAllByInviteeOrderByDateDesc(utilisateur);
     }
 
     @RequestMapping(value = "/invitations",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
