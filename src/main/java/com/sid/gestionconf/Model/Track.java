@@ -21,12 +21,10 @@ public class Track {
 	private Date datefin;
 	@OneToOne()
 	@JoinColumn(name = "idpapier", referencedColumnName = "id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Papier papier;
 	private Boolean terminer;
 	@ManyToOne()
 	@JoinColumn(name = "idsession", referencedColumnName = "id")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Session session;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
