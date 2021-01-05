@@ -28,6 +28,8 @@ public class Papier {
 	@OneToMany(mappedBy = "papier")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Evaluation> evaluations;
+	@OneToOne()
+	private Track track;
 	private String nom;
 	private String description;
 	private Boolean confirmer;
