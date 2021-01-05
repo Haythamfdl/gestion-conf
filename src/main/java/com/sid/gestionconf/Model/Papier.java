@@ -29,9 +29,11 @@ public class Papier {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Evaluation> evaluations;
 	@OneToOne()
+	@JoinColumn(name = "idtrack", referencedColumnName = "id")
 	private Track track;
 	private String nom;
 	private String description;
+	@Column(columnDefinition = "boolean default false")
 	private Boolean confirmer;
 	@OneToOne()
 	@JoinColumn(name = "idtopic", referencedColumnName = "id")

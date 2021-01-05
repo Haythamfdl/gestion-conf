@@ -17,11 +17,13 @@ public class Track {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String nom;
 	private Date datedeb;
 	private Date datefin;
 	@OneToOne()
 	@JoinColumn(name = "idpapier", referencedColumnName = "id")
 	private Papier papier;
+	@Column(columnDefinition = "boolean default false")
 	private Boolean terminer;
 	@ManyToOne()
 	@JoinColumn(name = "idsession", referencedColumnName = "id")
