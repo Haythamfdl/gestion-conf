@@ -16,4 +16,9 @@ public class Topic {
 	private Long id;
 	private String nom;
 	private String description;
+	@OneToOne()
+	@JoinColumn(name = "idconference", referencedColumnName = "id")
+	private Conference conference;
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

@@ -1,15 +1,18 @@
 package com.sid.gestionconf.Controller;
 
-import com.sid.gestionconf.Model.Papier;
-import com.sid.gestionconf.Model.Session;
-import com.sid.gestionconf.Model.Track;
-import com.sid.gestionconf.Model.Utilisateur;
+import com.sid.gestionconf.Model.*;
 import com.sid.gestionconf.Repos.PapierRepo;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -23,9 +26,16 @@ public class PapierController {
 
     @GetMapping( "/papiers/{id}")
     public List<Papier> getPapiers(@PathVariable(name = "id") Long id){
-        Track track= new Track();
-        track.setId(id);
-        return papierRepo.findAllByTrackAndDeleted(track,false);
+        Conference conference= new Conference();
+        conference.setId(id);
+        return papierRepo.findAllByConferenceAndDeleted(conference,false);
+    }
+
+    @GetMapping( "/papiers/confirmer/{id}")
+    public List<Papier> getCPapiers(@PathVariable(name = "id") Long id){
+        Conference conference= new Conference();
+        conference.setId(id);
+        return papierRepo.findAllByConferenceAndDeletedAndConfirmer(conference,false,true);
     }
 
     @GetMapping( "/papiers/my/{id}")
@@ -35,12 +45,18 @@ public class PapierController {
         return papierRepo.findAllByAuteurAndDeleted(utilisateur,false);
     }
 
-    @RequestMapping(value = "/papiers",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/papiers",method = RequestMethod.POST)
     public ResponseEntity<Papier> addPapier(@RequestBody Papier papier)
     {
         Papier pap = papierRepo.save(papier);
         ResponseEntity<Papier> res=new ResponseEntity<>(pap, HttpStatus.ACCEPTED);
         return res;
+    }
+
+    @RequestMapping(value = "/papiers/file",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void upload(@RequestBody MultipartFile file)
+    {
+
     }
 
     @RequestMapping(value = "/papiers",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)

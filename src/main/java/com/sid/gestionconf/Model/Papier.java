@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -29,8 +30,8 @@ public class Papier {
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Evaluation> evaluations;
 	@OneToOne()
-	@JoinColumn(name = "idtrack", referencedColumnName = "id")
-	private Track track;
+	@JoinColumn(name = "idconference", referencedColumnName = "id")
+	private Conference conference;
 	private String nom;
 	private String description;
 	@Column(columnDefinition = "boolean default false")
@@ -39,7 +40,7 @@ public class Papier {
 	@JoinColumn(name = "idtopic", referencedColumnName = "id")
 	private Topic topic;
 	@Lob
-	@Column(columnDefinition = "BLOB")
+	@Column(columnDefinition = "MEDIUMBLOB")
 	private byte[] data;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
