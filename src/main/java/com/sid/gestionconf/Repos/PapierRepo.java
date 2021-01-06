@@ -11,5 +11,5 @@ import java.util.List;
 public interface PapierRepo extends JpaRepository<Papier, Long> {
     public List<Papier> findAllByConferenceAndDeleted(Conference conference, boolean d);
     public List<Papier> findAllByConferenceAndDeletedAndConfirmer(Conference conference, boolean d, boolean c);
-    public List<Papier> findAllByAuteurAndDeleted(Utilisateur utilisateur, boolean d);
+    public List<Papier> findAllByPremierauteurAndDeleted(Utilisateur utilisateur, boolean d);
 }

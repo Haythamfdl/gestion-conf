@@ -42,7 +42,7 @@ public class PapierController {
     public List<Papier> getmyPapiers(@PathVariable(name = "id") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
-        return papierRepo.findAllByAuteurAndDeleted(utilisateur,false);
+        return papierRepo.findAllByPremierauteurAndDeleted(utilisateur,false);
     }
 
     @RequestMapping(value = "/papiers",method = RequestMethod.POST)
