@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,24 +47,23 @@ public class PapierController {
     }
 
     @RequestMapping(value = "/papiers",method = RequestMethod.POST)
-    public ResponseEntity<Papier> addPapier(@RequestBody Papier papier)
+    public Papier addPapier(@RequestBody Papier papier)
     {
         Papier pap = papierRepo.save(papier);
-        ResponseEntity<Papier> res=new ResponseEntity<>(pap, HttpStatus.ACCEPTED);
-        return res;
+        return pap;
     }
 
-    @RequestMapping(value = "/papiers/file",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void upload(@RequestBody MultipartFile file)
-    {
-
+    @RequestMapping(value = "/papiers/upload/{id}",method = RequestMethod.POST)
+    public void upload(@RequestBody MultipartFile file, @PathVariable(name = "id") Long id) throws IOException {
+        Papier pap=new Papier();
+        pap.setId(id);
+        papierRepo.save(pap);
     }
 
     @RequestMapping(value = "/papiers",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Papier> updatePapier(@RequestBody Papier papier)
+    public Papier updatePapier(@RequestBody Papier papier, @PathVariable(name = "id") Long id)
     {
         Papier pap = papierRepo.save(papier);
-        ResponseEntity<Papier> res=new ResponseEntity<>(pap, HttpStatus.ACCEPTED);
-        return res;
+        return pap;
     }
 }

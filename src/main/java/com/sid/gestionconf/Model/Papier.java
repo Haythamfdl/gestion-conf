@@ -39,9 +39,9 @@ public class Papier {
 	@OneToOne()
 	@JoinColumn(name = "idtopic", referencedColumnName = "id")
 	private Topic topic;
-	@Lob
+	/*@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
-	private byte[] data;
+	private byte[] data;*/
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
 }

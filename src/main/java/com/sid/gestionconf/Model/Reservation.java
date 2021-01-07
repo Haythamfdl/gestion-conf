@@ -19,17 +19,14 @@ public class Reservation {
 	private Long id;
 	@OneToOne()
 	@JoinColumn(name = "idhotel")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Hotel hotel;
-	private Long idchambre;
+	private String chambre;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idclient")
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Utilisateur client;
 	private Date datedeb;
 	private Date datefin;
 	private Boolean repas;
-	private double prix;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
 }
