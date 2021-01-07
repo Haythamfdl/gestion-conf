@@ -19,6 +19,7 @@ public class Utilisateur {
     private String nom;
     private String prenom;
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String pass;
     private String affiliaton;
     private String fonction;
