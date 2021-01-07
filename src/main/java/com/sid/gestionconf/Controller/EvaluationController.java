@@ -10,6 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -38,6 +42,7 @@ public class EvaluationController {
     @RequestMapping(value = "/evaluations",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Evaluation> addEvaluation(@RequestBody Evaluation evaluation)
     {
+        evaluation.setDate(Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC)));
         Evaluation eva = evaluationRepo.save(evaluation);
         ResponseEntity<Evaluation> res=new ResponseEntity<>(eva, HttpStatus.ACCEPTED);
         return res;

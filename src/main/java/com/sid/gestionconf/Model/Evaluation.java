@@ -25,6 +25,7 @@ public class Evaluation {
 	private String revue;
 	private String commentaire;
 	private String note;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
