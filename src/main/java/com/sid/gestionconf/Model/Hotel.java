@@ -28,5 +28,6 @@ public class Hotel implements Serializable {
 	@OneToMany(mappedBy = "hotel")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<SalleConference> saleconf;
-
+	@Column(columnDefinition = "boolean default false")
+	private Boolean deleted;
 }

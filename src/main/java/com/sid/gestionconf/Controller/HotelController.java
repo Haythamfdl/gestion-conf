@@ -1,7 +1,6 @@
 package com.sid.gestionconf.Controller;
 
 import com.sid.gestionconf.Model.Hotel;
-import com.sid.gestionconf.Model.Utilisateur;
 import com.sid.gestionconf.Repos.HotelRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +20,7 @@ public class HotelController {
 
     @GetMapping("/hotels")
     public List<Hotel> getHotels(){
-        return hotelRepo.findAll();
+        return hotelRepo.findAllByDeleted(false);
     }
 
     @GetMapping("/hotels/{id}")
