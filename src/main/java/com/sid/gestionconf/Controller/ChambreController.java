@@ -4,10 +4,10 @@ import com.sid.gestionconf.Model.Chambre;
 import com.sid.gestionconf.Model.Hotel;
 import com.sid.gestionconf.Model.SalleConference;
 import com.sid.gestionconf.Repos.ChambreRepo;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +30,21 @@ public class ChambreController {
         Hotel hotel = new Hotel();
         hotel.setId(id);
         return chambreRepo.findAllByDisponibleAndHotel(true, hotel);
+    }
+
+    @RequestMapping(value = "/chambres",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Chambre> addChambre(@RequestBody Chambre chambre)
+    {
+        Chambre c = chambreRepo.save(chambre);
+        ResponseEntity<Chambre> res=new ResponseEntity<>(c, HttpStatus.ACCEPTED);
+        return res;
+    }
+
+    @RequestMapping(value = "/chambres",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Chambre> updateChambre(@RequestBody Chambre chambre)
+    {
+        Chambre c = chambreRepo.save(chambre);
+        ResponseEntity<Chambre> res=new ResponseEntity<>(c, HttpStatus.ACCEPTED);
+        return res;
     }
 }
