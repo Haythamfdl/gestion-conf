@@ -20,7 +20,7 @@ public class Hotel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
-	private String adress;
+	private String address;
 	private String ville;
 	@OneToMany(mappedBy = "hotel")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
