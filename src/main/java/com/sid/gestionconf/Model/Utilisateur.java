@@ -35,4 +35,6 @@ public class Utilisateur {
     private Set<Invitation> invitationsrecu;
     @Column(columnDefinition = "boolean default false")
     private Boolean deleted;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isadmin;
 }
