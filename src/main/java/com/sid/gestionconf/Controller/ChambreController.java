@@ -25,11 +25,18 @@ public class ChambreController {
         return chambreRepo.findAll();
     }
 
+    @GetMapping("/chambres/{id}")
+    public List<Chambre> getAllChambrehot(@PathVariable(name = "id") Long id){
+        Hotel hotel = new Hotel();
+        hotel.setId(id);
+        return chambreRepo.findAllByHotelAndDeleted(hotel,false);
+    }
+
     @GetMapping("/chambres/disponible/{id}")
     public List<Chambre> getChambredis(@PathVariable(name = "id") Long id){
         Hotel hotel = new Hotel();
         hotel.setId(id);
-        return chambreRepo.findAllByDisponibleAndHotel(true, hotel);
+        return chambreRepo.findAllByDisponibleAndHotelAndDeleted(true, hotel,false);
     }
 
     @RequestMapping(value = "/chambres",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

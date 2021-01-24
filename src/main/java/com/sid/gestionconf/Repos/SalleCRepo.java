@@ -11,4 +11,5 @@ import java.util.List;
 @RepositoryRestResource
 public interface SalleCRepo extends JpaRepository<SalleConference, Long> {
     public List<SalleConference> findAllByDisponibleAndHotel(boolean d, Hotel hotel);
+    public List<SalleConference> findAllByHotel(Hotel hotel);
 }
