@@ -28,14 +28,14 @@ public class SalleConferenceController {
     public List<SalleConference> getAllSConferenceshot(@PathVariable(name = "id") Long id){
         Hotel hotel = new Hotel();
         hotel.setId(id);
-        return salleCRepo.findAllByDisponibleAndHotel(true, hotel);
+        return salleCRepo.findAllByHotelAndDeleted(hotel,false);
     }
 
     @GetMapping("/sallesconferences/disponible/{id}")
     public List<SalleConference> getSConferencesdis(@PathVariable(name = "id") Long id){
         Hotel hotel = new Hotel();
         hotel.setId(id);
-        return salleCRepo.findAllByDisponibleAndHotel(true, hotel);
+        return salleCRepo.findAllByDisponibleAndHotelAndDeleted(true, hotel,false);
     }
 
     @RequestMapping(value = "/sallesconferences",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

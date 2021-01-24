@@ -10,6 +10,6 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface SalleCRepo extends JpaRepository<SalleConference, Long> {
-    public List<SalleConference> findAllByDisponibleAndHotel(boolean d, Hotel hotel);
-    public List<SalleConference> findAllByHotel(Hotel hotel);
+    public List<SalleConference> findAllByDisponibleAndHotelAndDeleted(boolean d, Hotel hotel,boolean dl);
+    public List<SalleConference> findAllByHotelAndDeleted(Hotel hotel, boolean d);
 }

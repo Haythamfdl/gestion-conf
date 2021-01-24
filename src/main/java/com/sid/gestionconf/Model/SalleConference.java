@@ -19,7 +19,6 @@ public class SalleConference {
 	private long id;
 	private String numero;
 	private int nbpersonne;
-	private double prix;
 	private Boolean disponible;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idhotel")
