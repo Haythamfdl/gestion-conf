@@ -30,7 +30,7 @@ public class Utilisateur {
     @OneToMany(mappedBy = "inviteur")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Invitation> invitationsenv;
-    @OneToMany(mappedBy = "invitee")
+    @OneToMany(mappedBy = "invite")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Set<Invitation> invitationsrecu;
     @Column(columnDefinition = "boolean default false")

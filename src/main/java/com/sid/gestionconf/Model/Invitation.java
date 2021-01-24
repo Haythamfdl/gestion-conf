@@ -22,8 +22,8 @@ public class Invitation {
 	@JoinColumn(name = "idinviteur", referencedColumnName = "id")
 	private Utilisateur inviteur;
 	@ManyToOne()
-	@JoinColumn(name = "idinviter", referencedColumnName = "id")
-	private Utilisateur invitee;
+	@JoinColumn(name = "idinvite", referencedColumnName = "id")
+	private Utilisateur invite;
 	@ManyToOne
 	@JoinColumn(name = "idconference", referencedColumnName = "id")
 	private Conference conference;

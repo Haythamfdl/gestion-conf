@@ -39,8 +39,16 @@ public class InvitationController {
     public List<Invitation> getInvitationrec(@PathVariable(name = "id") Long id){
         Utilisateur utilisateur= new Utilisateur();
         utilisateur.setId(id);
-        return invitationRepo.findAllByInviteeOrderByDateDesc(utilisateur);
+        return invitationRepo.findAllByInviteOrderByDateDesc(utilisateur);
     }
+
+    @GetMapping("/invitations/conf/{id}")
+    public List<Invitation> getInvitationConf(@PathVariable(name = "id") Long id){
+        Conference conference= new Conference();
+        conference.setId(id);
+        return invitationRepo.findAllByConferenceOrderByDateDesc(conference);
+    }
+
 
     @RequestMapping(value = "/invitations",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Invitation> addInvitation(@RequestBody Invitation invitation)
