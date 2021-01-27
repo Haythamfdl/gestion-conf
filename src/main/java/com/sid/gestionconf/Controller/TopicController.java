@@ -1,7 +1,6 @@
 package com.sid.gestionconf.Controller;
 
 import com.sid.gestionconf.Model.Conference;
-import com.sid.gestionconf.Model.Papier;
 import com.sid.gestionconf.Model.Topic;
 import com.sid.gestionconf.Repos.TopicRepo;
 import org.springframework.http.HttpStatus;

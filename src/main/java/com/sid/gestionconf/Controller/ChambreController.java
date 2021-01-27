@@ -2,7 +2,6 @@ package com.sid.gestionconf.Controller;
 
 import com.sid.gestionconf.Model.Chambre;
 import com.sid.gestionconf.Model.Hotel;
-import com.sid.gestionconf.Model.SalleConference;
 import com.sid.gestionconf.Repos.ChambreRepo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

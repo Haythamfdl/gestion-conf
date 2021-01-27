@@ -1,6 +1,5 @@
 package com.sid.gestionconf.Controller;
 
-import com.sid.gestionconf.Model.Conference;
 import com.sid.gestionconf.Model.Session;
 import com.sid.gestionconf.Model.Track;
 import com.sid.gestionconf.Repos.TrackRepo;

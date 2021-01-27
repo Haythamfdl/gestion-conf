@@ -1,19 +1,16 @@
 package com.sid.gestionconf.Controller;
 
-import com.sid.gestionconf.Model.*;
+import com.sid.gestionconf.Model.Conference;
+import com.sid.gestionconf.Model.Papier;
+import com.sid.gestionconf.Model.Utilisateur;
 import com.sid.gestionconf.Repos.PapierRepo;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -46,24 +43,32 @@ public class PapierController {
         return papierRepo.findAllByPremierauteurAndDeleted(utilisateur,false);
     }
 
-    @RequestMapping(value = "/papiers",method = RequestMethod.POST)
+    @RequestMapping(value = "/papiers",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Papier addPapier(@RequestBody Papier papier)
     {
         Papier pap = papierRepo.save(papier);
         return pap;
     }
 
+    public Papier store(Long id,MultipartFile file) throws IOException {
+        Papier papier = new Papier();
+        papier.setId(id);
+        papier.setData(file.getBytes());
+        return papierRepo.save(papier);
+    }
+
     @RequestMapping(value = "/papiers/upload/{id}",method = RequestMethod.POST)
-    public void upload(@RequestBody MultipartFile file, @PathVariable(name = "id") Long id) throws IOException {
-        Papier pap=new Papier();
-        pap.setId(id);
-        papierRepo.save(pap);
+    public void upload(@RequestParam("file") MultipartFile file, @PathVariable(name = "id") Long id) throws IOException {
+        this.store(id,file);
     }
 
     @RequestMapping(value = "/papiers",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Papier updatePapier(@RequestBody Papier papier, @PathVariable(name = "id") Long id)
+    public ResponseEntity<Papier> updatePapier(@RequestBody Papier papier)
     {
-        Papier pap = papierRepo.save(papier);
-        return pap;
+        Papier p = papierRepo.save(papier);
+        ResponseEntity<Papier> res=new ResponseEntity<>(p, HttpStatus.ACCEPTED);
+        return res;
     }
+
+
 }

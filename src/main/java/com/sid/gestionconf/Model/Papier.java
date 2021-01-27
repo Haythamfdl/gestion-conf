@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -39,9 +38,10 @@ public class Papier {
 	@OneToOne()
 	@JoinColumn(name = "idtopic", referencedColumnName = "id")
 	private Topic topic;
-	/*@Lob
+	@Lob
 	@Column(columnDefinition = "MEDIUMBLOB")
-	private byte[] data;*/
+	private byte[] data;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
+	private String lien;
 }

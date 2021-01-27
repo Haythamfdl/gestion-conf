@@ -1,6 +1,5 @@
 package com.sid.gestionconf.Controller;
 
-import com.sid.gestionconf.Model.Conference;
 import com.sid.gestionconf.Model.Reservation;
 import com.sid.gestionconf.Model.Utilisateur;
 import com.sid.gestionconf.Repos.ReservationRepo;
