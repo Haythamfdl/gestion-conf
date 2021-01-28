@@ -33,7 +33,7 @@ public class Session implements Serializable {
 	private Date datefin;
 	private String salle;
 	@Column(columnDefinition = "boolean default false")
-	private Boolean termine;
+	private Boolean terminer;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
 }
