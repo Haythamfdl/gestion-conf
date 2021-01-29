@@ -20,6 +20,7 @@ public class Hotel implements Serializable {
 	private String nom;
 	private String address;
 	private String ville;
+	private String pays;
 	@OneToMany(mappedBy = "hotel")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Set<Chambre> chambres;
