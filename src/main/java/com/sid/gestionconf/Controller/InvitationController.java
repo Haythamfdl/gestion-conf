@@ -49,21 +49,17 @@ public class InvitationController {
         return invitationRepo.findAllByConferenceOrderByDateDesc(conference);
     }
 
-
     @RequestMapping(value = "/invitations",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Invitation> addInvitation(@RequestBody Invitation invitation)
-    {
+    public ResponseEntity<Invitation> addInvitation(@RequestBody Invitation invitation) {
         Invitation inv = invitationRepo.save(invitation);
         ResponseEntity<Invitation> res=new ResponseEntity<>(inv, HttpStatus.ACCEPTED);
         return res;
     }
 
     @RequestMapping(value = "/invitations",method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Invitation> updateInvitation(@RequestBody Invitation invitation)
-    {
+    public ResponseEntity<Invitation> updateInvitation(@RequestBody Invitation invitation) {
         Invitation inv = invitationRepo.save(invitation);
         ResponseEntity<Invitation> res=new ResponseEntity<>(inv, HttpStatus.ACCEPTED);
         return res;
     }
-
 }

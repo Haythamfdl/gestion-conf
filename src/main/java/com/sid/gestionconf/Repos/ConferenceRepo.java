@@ -9,7 +9,6 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface ConferenceRepo extends JpaRepository<Conference, Long> {
-    public List<Conference> findAllByTerminerOrderByIdDesc(boolean t);
     public List<Conference> findAllByTerminerAndDeletedOrderByIdDesc(boolean t,boolean d);
     public List<Conference> findAllByOrganisateurAndDeletedOrderByIdDesc(Utilisateur u,boolean d);
 }

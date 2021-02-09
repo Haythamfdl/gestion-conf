@@ -31,5 +31,4 @@ public class Invitation {
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
-
 }

@@ -8,10 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class Papier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +35,6 @@ public class Papier {
 	@OneToOne()
 	@JoinColumn(name = "idtopic", referencedColumnName = "id")
 	private Topic topic;
-	@Lob
-	@Column(columnDefinition = "MEDIUMBLOB")
-	private byte[] data;
 	@Column(columnDefinition = "boolean default false")
 	private Boolean deleted;
 	private String lien;
